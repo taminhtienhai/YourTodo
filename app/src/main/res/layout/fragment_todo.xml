@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/todo_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_todo_scene"
+    tools:context=".fragment.TodoFragment" >
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/todo_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/todo_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/todo_nav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/todo_nav"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="672dp"
+        android:foregroundGravity="center">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/create_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="Create new task"
+            android:focusable="true"
+            android:src="@drawable/ic_new_task"
+            tools:layout_editor_absoluteX="129dp"
+            tools:layout_editor_absoluteY="123dp"
+            android:layout_gravity="center"/>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/new_task"
+        android:name="com.app.yourtodo.fragment.NewTaskFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="632dp" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <OnClick motion:targetId="@+id/create_task" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:layout_height="61dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="412dp"
+            android:id="@+id/todo_nav"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@+id/todo_container"
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:layout_height="342dp"
+            android:layout_width="410dp"
+            android:id="@+id/new_task"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/todo_container" />
+        <Constraint
+            android:id="@+id/todo_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/create_task"
+            motion:layout_constraintEnd_toEndOf="@+id/todo_container"
+            motion:layout_constraintStart_toStartOf="@+id/todo_container"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.946"
+            motion:layout_constraintHorizontal_bias="0.498" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:layout_height="match_parent"
+            motion:layout_constraintTop_toTopOf="@+id/todo_container"
+            android:layout_width="412dp"
+            android:id="@+id/new_task"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="0dp"
+            motion:layout_constraintHorizontal_bias="0.0" />
+        <Constraint
+            android:id="@+id/todo_nav"
+            android:layout_width="411dp"
+            android:layout_height="62dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintTop_toTopOf="@+id/todo_container"
+            android:layout_marginTop="668dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:id="@+id/todo_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/create_task"
+            motion:layout_constraintBottom_toBottomOf="@+id/todo_container"
+            motion:layout_constraintEnd_toEndOf="@+id/todo_container"
+            motion:layout_constraintStart_toStartOf="@+id/todo_container"
+            motion:layout_constraintHorizontal_bias="0.498"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.942" />
+    </ConstraintSet>
+</MotionScene>

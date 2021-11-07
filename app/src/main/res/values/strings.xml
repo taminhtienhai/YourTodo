@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Your Todo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_todo">This is Todo View</string>
+    <string name="welcome_title">Your Todo</string>
+</resources>

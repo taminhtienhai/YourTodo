@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcome_view">
+
+    <fragment
+        android:id="@+id/welcome_view"
+        android:name="com.app.yourtodo.fragment.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/welcome_to_profile"
+            app:destination="@id/profile_view" />
+    </fragment>
+    <fragment
+        android:id="@+id/todo_view"
+        android:name="com.app.yourtodo.fragment.TodoFragment"
+        android:label="TodoFragment" />
+    <fragment
+        android:id="@+id/profile_view"
+        android:name="com.app.yourtodo.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/profile_to_todo"
+            app:destination="@id/todo_view" />
+    </fragment>
+</navigation>
