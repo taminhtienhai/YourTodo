@@ -17,4 +17,7 @@ interface WorkDao {
 
     @Query("SELECT * FROM work")
     suspend fun loadAllWork(): List<Work>
+
+    @Query("DELETE FROM work WHERE id = :id")
+    suspend fun deleteWorkById(id: Int)
 }
