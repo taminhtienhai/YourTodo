@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.app.yourtodo.R
 import com.app.yourtodo.extension.toISO
@@ -29,7 +30,11 @@ class TaskAdapter(var tasks: List<Work>) :
     }
 
     companion object {
-        class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        class TaskViewHolder(itemView: View) : View.OnClickListener, RecyclerView.ViewHolder(itemView) {
+
+            init {
+                itemView.setOnClickListener(this)
+            }
 
             var title: TextView = itemView.findViewById(R.id.task_title)
             var createdDate: TextView = itemView.findViewById(R.id.task_created_date)
@@ -37,6 +42,10 @@ class TaskAdapter(var tasks: List<Work>) :
             fun bind(work: Work) {
                 title.text = work.title
                 createdDate.text = work.startDate?.toISO()
+            }
+
+            override fun onClick(v: View?) {
+                Toast.makeText(v?.context, "CLick", Toast.LENGTH_SHORT).show()
             }
         }
     }

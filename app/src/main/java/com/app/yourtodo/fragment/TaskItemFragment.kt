@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.yourtodo.R
 import com.app.yourtodo.databinding.FragmentTaskItemBinding
 
 class TaskItemFragment : Fragment() {
