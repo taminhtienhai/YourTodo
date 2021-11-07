@@ -1,17 +1,27 @@
 package com.app.yourtodo.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
+import androidx.fragment.app.findFragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.RecyclerView
 import com.app.yourtodo.R
 import com.app.yourtodo.database.DatabaseContext
 import com.app.yourtodo.extension.toISO
+import com.app.yourtodo.fragment.TaskDetailFragment
+import com.app.yourtodo.fragment.TaskItemFragment
+import com.app.yourtodo.fragment.TodayTaskFragment
 import com.app.yourtodo.model.Work
 import com.app.yourtodo.repo.WorkDao
+import com.app.yourtodo.viewmodel.TaskViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
@@ -50,15 +60,24 @@ class TaskAdapter(var tasks: List<Work>) :
             var title: TextView = itemView.findViewById(R.id.task_title)
             var createdDate: TextView = itemView.findViewById(R.id.task_created_date)
             var id: Int? = 0
+            var description: String = ""
 
             fun bind(work: Work) {
                 title.text = work.title
                 createdDate.text = work.startDate?.toISO()
                 id = work.id
+                description = work.description
             }
 
             override fun onClick(v: View?) {
-
+                TaskViewModel.selected = Work(id = id, title = title.text.toString(), description = description)
+                FragmentManager.findFragment<TodayTaskFragment>(v!!)
+                    .parentFragmentManager
+                    .commit {
+                        setReorderingAllowed(true)
+                        replace(R.id.todo_container, TaskDetailFragment())
+                        addToBackStack(null)
+                    }
             }
 
             override fun onLongClick(v: View?): Boolean {
